@@ -1,0 +1,60 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+  
+    <div class="navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        {% comment %} {% if request.user.is_authenticated %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/task">Gorev Sayfasi</a>
+        </li>
+        {% endif %} {% endcomment %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Anasayfa</a>
+        </li>
+      {% if request.user.is_authenticated %}
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/rehber/">Rehber</a>
+        </li>
+      {% endif %}
+
+      </ul>
+      <ul class='navbar-nav ml-auto'>
+
+      {% if request.user.is_authenticated %}
+
+        {% comment %} <li class="nav-item active">
+          <a class="nav-link" href="/user/profile">Profil</a>
+        </li> {% endcomment %}
+
+        <li class="nav-item active">
+          <a class="nav-link" href="/user/logout">Cikis Yap</a>
+        </li> 
+
+      {% else %}
+      <li class="nav-item active">
+        <a class="nav-link" href="/user/login">Giris Yap</a>
+      </li> 
+      {% endif %}
+
+        {% comment %} <li class="nav-item dropdown active">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Cikis Yap</a>
+            <a class="dropdown-item" href="#">Profil</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Ayarlar</a>
+          </div>
+        </li> {% endcomment %}
+        {% comment %} <li class="nav-item active">
+          <a class="nav-link" href="#">Disabled</a>
+        </li> {% endcomment %}
+      </ul>
+
+    </div>
+  </nav>

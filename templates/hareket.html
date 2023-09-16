@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class='container'>
+
+        <h3>{{hareket.hedef}}</h3>
+        <h6>{{hareket.miktar}} TL {{hareket.durum}}</h6>
+        <p>Islem Tarihi: {{hareket.tarih}}</p>
+        <p>{{hareket.aciklama | safe}}</p>
+        <div class="col-rm">
+            <a class="btn btn-warning" href='/hesap/duzenle/{{hareket.id}}'>Guncelle</a>
+        </div>
+
+
+
+</div>
+
+
+
+{% endblock body %}

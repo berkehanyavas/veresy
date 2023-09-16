@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+{% load crispy_forms_tags %}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h3>Islem</h3>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form | crispy }}
+            <br>    
+            <button type='submit' class='btn btn-primary'>Kaydet</button>
+        </form>
+        <br>
+        {% if flag == 'rehber' %}
+        <a type='button' class='btn btn-danger' href='/rehber/kisi/sil/{{id}}'>Sil</a>
+        {% elif flag == 'hesap' %}
+        <a type='button' class='btn btn-danger' href='/hesap/sil/{{id}}'>Sil</a>
+        {% endif %}
+    </div>
+</div>
+<br>
+
+
+{% endblock body %}

@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<div class='container'>
+    <div class="row">
+        <div class="col-sm">
+            <h3>{{kisi}}</h3>
+            <h6>{{total}} TL</h6>
+        </div>
+        <div class="col-sm">
+        </div>
+        <div class="col-rm">
+            <a class="btn btn-warning" href='/rehber/kisi/guncelle/{{kisi.id}}'>Bilgileri Guncelle</a>
+        </div>
+    </div>
+
+    <div class='row'>
+        <div class = 'col-sm'>
+
+            <p>telefon1: {{kisi.tel1}}</p>
+            {% if kisi.tel2 != None %}
+            <p>telefon2: {{kisi.tel2}}</p>
+            {% endif %}
+            <p>adres: {{kisi.adres|safe}}</p>
+            <p>not: {{kisi.notlar|safe}}</p>
+        </div>
+    </div>
+    <div class='row'>
+    </div>
+    <div class='row'>
+        <div class="col-md-12  text-right">
+            <a class="btn btn-primary" href='/hesap/ekle/{{kisi.id}}'>Hareket Ekle</a>
+        </div>
+    </div>
+
+    <br>
+    <table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">Goruntule</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Durum</th>
+        <th scope="col">Miktar</th>
+        <th scope="col">Duzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for hareket in hareketler %}
+    {% if hareket.durum == 'Alindi' %}
+        <tr class="table-success">
+    {% else %}
+        <tr class="table-danger">
+    {% endif %}
+        <th scope="row"><a href="/hesap/goruntule/{{hareket.id}}">Goruntule</a></th>
+        <td>{{hareket.tarih}}</td>
+        <td>{{hareket.durum}}</td>
+        <td>{{hareket.miktar}}</td>
+        
+                <td><a href='/hesap/duzenle/{{hareket.id}}'>Duzenle</a></td>
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+    </table>
+</div>
+
+{% endblock body %}
+
+
+
+ 

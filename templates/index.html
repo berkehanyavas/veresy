@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class='container'>
+    <div class='jumbotron text-center'>
+        <h3>Anasayfa</h3>
+        <h6>Son islemler</h6>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col">Adi</th>
+        <th scope="col">Tarih</th>
+        <th scope="col">Durum</th>
+        <th scope="col">Miktar</th>
+        <th scope="col">Duzenle</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for hareket in hareketler %}
+    {% if hareket.durum == 'Alindi' %}
+        <tr class="table-success">
+    {% else %}
+        <tr class="table-danger">
+    {% endif %}
+        <th scope="row"><a href="/rehber/kisi/{{hareket.hedef.id}}">{{hareket.hedef}}</a></th>
+        <td>{{hareket.tarih}}</td>
+        <td>{{hareket.durum}}</td>
+        <td>{{hareket.miktar}}</td>
+        
+                <td><a href='/hesap/duzenle/{{hareket.id}}'>Duzenle</a></td>
+
+        </tr>
+
+    {% endfor %}
+    </tbody>
+    </table>
+
+
+
+
+
+        {% for hareket in hareketler %}
+        
+        {% endfor %}
+    </div>
+</div>
+{% endblock body %}

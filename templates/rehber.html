@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+
+{% block body %}
+<div class='container'>
+
+
+<div class="row">
+    <div class="col-sm">
+        <h3>Kisiler:</h3>
+    </div>
+    <div class="col-sm">
+    </div>
+    <div class="col-rm">
+            <a class="btn btn-primary" href='ekle/'>Ekle</a>
+    </div>
+  </div>
+
+
+
+
+
+<div class='row'>
+</div>
+<div class='row'><div class="col-md-12 bg-light text-right">
+        </div>
+</div>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Adi</th>
+      <th scope="col">Son Islem Tarihi</th>
+      <th scope="col">Son Islem Miktari</th>
+      <th scope="col">Total</th>
+      <th scope="col">Goruntule</th>
+    </tr>
+  </thead>
+  <tbody>
+
+
+
+  {% for kisi,toplam,tarih,miktar in kisiler %}
+      <tr>
+      <th scope="row"><a href='kisi/{{kisi.id}}'>{{kisi.isim}}</a></th>
+
+      {% if tarih == None %}
+        <td>Islem kaydi yok.</td>
+      {% else %}
+        <td>{{tarih}}</td>
+      {% endif %}
+      
+      {% if miktar == None %}
+        <td>0,0 TL</td>
+      {% else %}
+        <td>{{miktar}} TL</td>
+      {% endif %}
+
+        {% if toplam == None %}
+        <td>Islem kaydi yok.</td>
+        {% else %}
+        <td>{{toplam}} TL</td>
+        {% endif %}
+
+      <td><a href='kisi/{{kisi.id}}'>Goruntule</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+</div>
+
+{% endblock body %}

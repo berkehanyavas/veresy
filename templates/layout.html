@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>{{sayfaadi}}</title>
+</head>
+<body>
+    {% include 'includes/navbar.html' %}
+
+    <br>
+
+    <div class='container-fluid'>
+        <div class='container'>
+            {% if messages %}
+                {% for message in messages %}
+                    <div {% if message.tags %} class='alert alert-{{ message.tags}}' {% endif %}>
+                        {{message}}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+        {% if request.user.is_authenticated %}
+            <div class='container'>
+                <p>
+                    {{request.user.first_name}} {{request.user.last_name}} olarak giris yapildi.
+                </p>
+            </div>
+        {% else %}
+            <div class='container'>
+                <p>
+                    Giris yapilmamis.
+                </p>
+            </div>
+        {% endif %}
+
+        {% block body %}
+        
+        {% endblock body %}
+
+    </div>
+
+
+
+        <script src='{% static "js/bootstrap.bundle.min.js" %}'></script>
+        <script src='{% static "js/jquery-3.5.1.min.js" %}'></script>
+        <script src='{% static "js/run_prettify.js" %}'></script>
+
+</body>
+</html>
