@@ -1,6 +1,9 @@
 from django import forms
 from .models import Hareket, Sil
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
 class HareketForm(forms.ModelForm):
     class Meta:
         model = Hareket
@@ -10,6 +13,9 @@ class HareketForm(forms.ModelForm):
             'aciklama',
             'tarih'
         ]
+        widgets = {
+            'tarih': DateInput(),
+        }
         
 class SilForm(forms.ModelForm):
     class Meta:
